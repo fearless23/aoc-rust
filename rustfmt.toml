@@ -1,0 +1,2 @@
+hard_tabs = true # i.e true means tab, false means space
+tab_spaces = 2 # i.e tab size = 2
