@@ -6,7 +6,7 @@ use aoc2022::day4;
 use aoc2022::day5;
 
 fn main() {
-	run_solution("5.1")
+	run_solution("5.2")
 }
 
 fn run_solution(name: &str) {

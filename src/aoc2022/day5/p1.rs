@@ -1,38 +1,25 @@
-use super::super::get_lines::get_lines;
+use super::shared::get_data;
+use super::shared::MoveData;
 
 pub fn solution() {
-	let lines = parse_lines();
-	println!("Count containing within {:?}", lines);
+	let (a, b) = get_data("input");
+	let stacks = execute_moves(a, b);
+	println!("Answer - {stacks}");
 }
 
-// stacks => 4*stacks - 1 = line_length
-// stacks = line_length + 1 / 4
-// [L] [T] [M] [Q] [L] [C]     [Z]
-// 123456789
-// indices:     2, 6, 10, 14
-// stack num:   1, 2, 3,  4
-// stack range: 0, 1, 2,  3
-// 2 + 4*n
-fn parse_lines() -> Vec<Vec<String>> {
-	let lines = get_lines("src/aoc2022/day5/demo.txt");
-	let stack_size = (lines[0].len() + 1) / 4;
-	println!("{stack_size}");
-
-	let mut stacks: Vec<Vec<String>> = Vec::new();
-	for line in &lines {
-		if line.is_empty() {
-			break;
+fn execute_moves(mut stacks: Vec<Vec<String>>, moves_data: Vec<MoveData>) -> String {
+	for move_data in moves_data {
+		let MoveData { to, from, count } = move_data;
+		for _ in 0..count {
+			let a = stacks[from].pop().unwrap();
+			stacks[to].push(a);
 		}
-		println!("{}", line);
-		let mut boxes: Vec<String> = Vec::new();
-		for i in 0..stack_size {
-			let index = i * 4 + 2;
-			println!("{index}");
-			println!("{} {}", line, &line[index..index + 1]);
-			let box_name = line[index..index + 1].to_string();
-			boxes.push(box_name);
-		}
-		stacks.push(boxes);
 	}
-	stacks
+	let mut top_boxes = String::from("");
+	for s in stacks {
+		top_boxes.push_str(s.last().unwrap())
+	}
+	top_boxes
 }
+// take from stack --> take last item
+// push to stack -> push at last

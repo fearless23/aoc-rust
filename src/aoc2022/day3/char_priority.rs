@@ -1,7 +1,7 @@
 /**
 Returns priority for every Alphabet
 - a=1, z=26
- - A=27, Z=52
+- A=27, Z=52
 */
 pub fn get_char_priority(i: String) -> u32 {
 	match i.as_str() {
