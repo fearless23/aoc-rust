@@ -4,9 +4,10 @@ use aoc2022::day2;
 use aoc2022::day3;
 use aoc2022::day4;
 use aoc2022::day5;
+use aoc2022::day6;
 
 fn main() {
-	run_solution("5.2")
+	run_solution("6.2")
 }
 
 fn run_solution(name: &str) {
@@ -21,6 +22,8 @@ fn run_solution(name: &str) {
 		"4.2" => day4::p2::solution(),
 		"5.1" => day5::p1::solution(),
 		"5.2" => day5::p2::solution(),
+		"6.1" => day6::p1::solution(),
+		"6.2" => day6::p2::solution(),
 		_ => panic!("unknown day or solution"),
 	}
 }

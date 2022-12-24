@@ -10,8 +10,7 @@ pub fn get_data(file_type: &str) -> (Vec<Vec<String>>, Vec<MoveData>) {
 }
 
 fn check_lines(file_type: &str) -> (Vec<String>, usize, usize) {
-	let path = &format!("src/aoc2022/day5/{file_type}.txt");
-	let lines = get_lines(path);
+	let lines = get_lines("5", file_type);
 	let num_of_stacks = (lines[0].len() + 1) / 4;
 	let mut empty_line = 0;
 	for (line_index, line) in lines.iter().enumerate() {

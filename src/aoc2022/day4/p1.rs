@@ -7,7 +7,7 @@ pub fn solution() {
 }
 
 fn parse_lines() -> Vec<Vec<u32>> {
-	let lines = get_lines("src/aoc2022/day4/input.txt");
+	let lines = get_lines("4", "input");
 	let mut parsed_lines: Vec<Vec<u32>> = Vec::new();
 	for line in lines {
 		let parsed_line = line
